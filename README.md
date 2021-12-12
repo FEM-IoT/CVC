@@ -1,6 +1,6 @@
 # CVC - P2 - Detecció de Vianants i Bicicletes
 Aquest repositori conté el codi per implementar la funcionalitat del projecte FEM-IoT P2 anomenat "Valorització de dades de la IoT". Concretament, aquest reposotori conté el codi del cas d'ús "Algorisme d'empaquetat per a la detecció de vianants i vehicles lleugers".
-Aquest repositori conté tot el codi i fitxers per processsar un video a la plataforma CVC Webservices. A més, conté un script per executar el codi sense tota l'arquitectura del servidor, per fàcilment comprovar la funcionalitat en una plataforma Linux proveïda d'una targeta GPU (Craphic Processing Unit).
+En aquest reposotori hi ha tot el codi i fitxers per processsar un video a la plataforma CVC Webservices. A més, conté un script per executar el codi sense tota l'arquitectura del servidor, per fàcilment comprovar la funcionalitat en una plataforma Linux proveïda d'una targeta GPU (Craphic Processing Unit).
 El reposotori també té un fitxer Dockerfile per fàcilment poder muntar un entorn on executar el codi.
 
 ## Summary
