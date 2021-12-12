@@ -37,7 +37,7 @@ Once the image of the container is created with docker using the command:
 	     sudo docker build --tag pedestriandetection .
 from the folder where the Dockerfile is, it is required to start an interactive session with the created image with the following command:
 
-        sudo nvidia-docker run -it -v $(pwd)/Yolo5_tf -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix yolov5 bash` 
+        sudo nvidia-docker run -it -v $(pwd)/Yolo5_tf -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix pedestriandetection bash` 
 
 To run the script into the container it has to be called with the following parameters:
 
