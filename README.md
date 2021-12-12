@@ -1,7 +1,7 @@
 # CVC - P2 - Detecció de Vianants i Bicicletes
 Aquest repositori conté el codi per implementar la funcionalitat del projecte FEM-IoT P2 anomenat "Valorització de dades de la IoT". Concretament, aquest reposotori conté el codi del cas d'ús "Algorisme d'empaquetat per a la detecció de vianants i vehicles lleugers".
 En aquest reposotori hi ha tot el codi i fitxers per processsar un video a la plataforma CVC Webservices. A més, conté un script per executar el codi sense tota l'arquitectura del servidor, per fàcilment comprovar la funcionalitat en una plataforma Linux proveïda d'una targeta GPU (Craphic Processing Unit).
-El reposotori també té un fitxer Dockerfile per fàcilment poder muntar un entorn on executar el codi.
+El repositori també conté un fitxer Dockerfile per fàcilment poder muntar un entorn on executar el codi.
 
 ## Summary
 The contribution of the CVC (Computer Vision Center) to the "Valorization of the data from the IoT" project is a module that recieves a video from a Zebra Crossing Area and analyzes the behaviour of the people and light vehicles crossing it. The aim of this project is to be able to determine whether a certain Zebra Crossing Area is a special problematic one, or if it has the traffic line periods of time correctly setup.
