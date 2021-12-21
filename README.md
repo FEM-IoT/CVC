@@ -1,31 +1,31 @@
 # CVC - P2 - Detecció de Vianants i Bicicletes
-Aquest repositori conté el codi per implementar la funcionalitat del projecte FEM-IoT P2 anomenat "Valorització de dades de la IoT". Concretament, aquest reposotori conté el codi del cas d'ús "Algorisme d'empaquetat per a la detecció de vianants i vehicles lleugers".
+Aquest repositori conté el codi per implementar la funcionalitat del projecte FEM-IoT P2 anomenat "Valorització de les dades de la IoT". Concretament, aquest reposotori conté el codi del cas d'ús "Algorisme d'empaquetat per a la detecció de vianants i vehicles lleugers".
 En aquest reposotori hi ha tot el codi i fitxers per processsar un video a la plataforma CVC Webservices. A més, conté un script per executar el codi sense tota l'arquitectura del servidor, per fàcilment comprovar la funcionalitat en una plataforma Linux proveïda d'una targeta GPU (Craphic Processing Unit).
 El repositori també conté un fitxer Dockerfile per fàcilment poder muntar un entorn on executar el codi.
 
-## Summary
-The contribution of the CVC (Computer Vision Center) to the "Valorization of the data from the IoT" project is a module that recieves a video from a Zebra Crossing Area and analyzes the behaviour of the people and light vehicles crossing it. The aim of this project is to be able to determine whether a certain Zebra Crossing Area is a special problematic one, or if it has the traffic line periods of time correctly setup.
+## Resum
+La contribució del CVC (Centre de Visió per Computador) al projecte "Valorització de les dades de la IoT" es un mòdul que rep un vídeo d'una zona on hi ha un o diversos passos de vianants, i que analitza el comportament de la gent i els vehicles lleugers que el creuen. L'objectiu d'aquest projecte és ser capaços de determinar si un pas de vianants es especialment problemàtic, o si els períodes de temps assignats a cada etapa semafòrica tenen els valors més adients.
 
-The module receives a video and first returns some information about the received video:
- - Duration.
- - Frames per second (fps).
- - Number of Zebra Crossing Areas.
- - Width of the video.
- - Height of the video.
+El mòdul rep un vídeo i primer de tot retorna informació del vídeo rebut:
+  - Durada
+  - Número de imatges (frames) per segon (fps).
+  - Número de passos de vianants.
+  - Amplada del vídeo.
+  - Alçada del vídeo.
+  
+a continuació, per cadascun dels passos de vianants del vídeo, retorna les següents estadístiques:
 
- and secondly, for each Zebra Crossing Area in the video, the following statistics:
+ - Temps mitjà utilitzat per creuar en direacció A / B.
+ - Temps mitjà utilitzat esperant abans de creuar en direcció A / B.
+ - Temps màxim utilitzat per creuar en direacció A / B.
+ - Temps màxim utilitzat esperant per creuar en direcció A / B.
+ - Temps mínim utilitzat per creuar en direcció A / B.
+ - Temps mínim utilitzat esperant per creuar en direcció A / B.
+ - Número de Bicicletes creuant en direcció A / B.
+ - Número de Persones creuant en direcció A / B.
 
- - Average time used to cross in direction A / B.
- - Average time used to wait before crossing in direction A / B.
- - Maximum time used to cross in direction A / B.
- - Maximum time used to wait before crossing in direction A / B.
- - Minimum time used to cross in direction A / B.
- - Minimum time used to wait before crossing in direction A / B.
- - Number of Bicycles crossing in direction A / B.
- - Number of Persons crossing in direction A / B.
-
-The technical approach used to perform this analysis is based on Deep Learnning.
-The system first runs a detector (based on a Yolo Detector) to detect the Zebra Crossing Areas in all the video. Once the Zebra Crossing Areas are clear, it runs a detector (also based on Yolo) to detect pedestrains and bicycles. With all the detections and the tracking of them, it determines how many frames each person and bicycle is crossing or waiting, and with this information it calculates the time used for each individual. The detections are also used to determine the waiting areas at the borders of the crossing areas.
+L'enfocament tècnic utilitzat per realitzar aquest anàlisis està basat en tècniques de Deep Learnning.
+El sistema en primer lloc executa un detector (basat en un detector Yolo) per detectar les zones del pas de vianants a tot el vídeo. Una vegada les zones dels passos de vianants estàn clares, executa un detector (també basat en Yolo) per detectar els vianants i les bicicletes. Amb totes les deteccions, i amb el tracking d'aquestes deteccions, determina durant quants frames cada persona o bicicleta estàn creuant o esperant, i amb aquesta informació calcula el temps utilitzat per cada individu. Les deteccions també son utilitzades per determinar les zones d'espera als límits de les zones de passos de vianants.
 
 ## Running Demo Script
 As it has been said, the code is setup to be run in the CVC Webservices server. The CVC Webservices is a CVC Webservice that it is based on Flask and that it uses GPU computation to run the cutting edge algorithms in Computer Vision developed by the Computer Vision Center (CVC).
