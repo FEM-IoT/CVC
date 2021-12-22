@@ -51,9 +51,10 @@ If the image cannot be output, it is possible that it is required to call
 before the interactive session with the Docker container is started.
 
 ## Files and Directories
-The repository contains 4 basic folders:
+The repository contains 5 basic folders:
 
  - Docker: Contains the Dockerfile and all the needed files to setup the environment to run the code.
+ - Documents: Contains an explanation of how the project has been devolped and how to easily run the code.
  - Storage: This folder is required for the CVC Webservices server architecture.
  - Tensorflow: Contains all the required files for the Tensorflow models used in the code.
  - Test: Contains video files to easily test the code.
