@@ -74,7 +74,7 @@ if __name__ == "__main__":
                 image = Image.fromarray(frame)
                 bboxes = ft.inferenceTensors(sess, return_tensorsZebraPass, num_classesZebraPass, score_threshZebraPass, frame) 
                 zebraPassesDetected.append(bboxes)
-                print ("Num Zebra passes is: ", len(bboxes))
+                #print ("Num Zebra passes is: ", len(bboxes))
                 
     #Let's get the Zebra Pass Global Coordinates.
     zebraPassCoordinates = ft.getZebraPassAvgCoordinates(zebraPassesDetected)
@@ -156,7 +156,7 @@ if __name__ == "__main__":
                 #//imageResized = cv2.resize(image, dsize=(800,600), interpolation = cv2.INTER_CUBIC)
                 #//cv2.imshow("result", imageResized)
                 frameIndex = frameIndex + 1
-                print("Frame index is", frameIndex)
+                #print("Frame index is", frameIndex)
                 #//if cv2.waitKey(1) & 0xFF == ord('q'):
                 #//    break            
             else:
