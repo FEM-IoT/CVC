@@ -27,39 +27,39 @@ a continuació, per cadascun dels passos de vianants del vídeo, retorna les seg
 L'enfocament tècnic utilitzat per realitzar aquest anàlisis està basat en tècniques de Deep Learnning.
 El sistema en primer lloc executa un detector (basat en un detector Yolo) per detectar les zones del pas de vianants a tot el vídeo. Una vegada les zones dels passos de vianants estàn clares, executa un detector (també basat en Yolo) per detectar els vianants i les bicicletes. Amb totes les deteccions, i amb el tracking d'aquestes deteccions, determina durant quants frames cada persona o bicicleta estàn creuant o esperant, i amb aquesta informació calcula el temps utilitzat per cada individu. Les deteccions també son utilitzades per determinar les zones d'espera als límits de les zones de passos de vianants.
 
-## Running Demo Script
-As it has been said, the code is setup to be run in the CVC Webservices server. The CVC Webservices is a CVC Webservice that it is based on Flask and that it uses GPU computation to run the cutting edge algorithms in Computer Vision developed by the Computer Vision Center (CVC).
-However, a script called "test_detection.py " is provided to be able to run the same code without the CVC Webservices architecture. Using the Dockerfile provided, a system can be setup to run this script without any the other software modules required by the server. It is important to remark that the system running this code has to have a GPU (Graphics Processing Unit) hardware to run.
+## Com executar l'Script de demo
+Tal com s'ha dit anteriorment, el codi està preparat per ser executat al CVC Webservices. El CVC Webservices es un webservice del CVC que està basat en Flask i que utilitza computació GPU per executar els algorismes més actuals en Visió per Computador desenvolupats al Centre de Visió per Computador (CVC).
+No obstant, també s'ha inclòs un script anomenat "test_detection.py" que permet executar el mateix codi sense l'arquitectura del CVC Webservices. Utilitzant el fitxer Dockerfile que s'inclou al repositori, es pot muntar un sistema per executar aquest script sense cap altre mòdul de software requerit pel servidor. És important remarcar que el sistema executant aquest codi ha de tenir instal·lada una targeta GPU (Graphics Processing Unit) per poder executar correctament el codi.
 
-Once the image of the container is created with docker using the command:
+Una vegada la imatge del container s'ha creat utilitzant la comanada:
 
 	     sudo docker build --tag pedestriandetection .
-from the folder where the Dockerfile is, it is required to start an interactive session with the created image with the following command:
+des de la carpeta on hi ha el Dockerfile, es necessari arrencar una sessió interactiva amb la imatge creada utilitzant la següent comanda:
 
         sudo nvidia-docker run -it -v $(pwd)/videos:/videos -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix pedestriandetection bash
 
-To run the script into the container it has to be called with the following parameters:
+Per executar l'script a dins el container, s'ha de cridar amb els següents paràmetres:
 
         python3 test_detection.py --model1 ./TensorFlow/femiot_crossing_yolov3.pb --classNames1 ./TensorFlow/femiot.names --model2 ./TensorFlow/yolov3.pb --classNames2 ./TensorFlow/coco.names ./Test/video.mp4
 
-Where ./Test/video.mp4 is the name of the video to be run.
-
-The output of the script are the statistics calculated. The script can also show an image with information about where the Zebra Crossing areas are, and with the trajectories of the pedestrians and bicycles.
-If the image cannot be output, it is possible that it is required to call
+On ./Test/video.mp4 es el nom del vídeo que es vol analitzar.
+La sortida de l'script son les estadístiques calculades. L'script també pot mostrar una imatge amb informació sobre on son la/es zona/es del/s pas/sos de vianants i amb les trajectòries dels vianants i les bicicletes.
+Si la imatge no pot ser mostrada, es possible que calgui executar la següent comanda
 `xhost + loca: docker
-before the interactive session with the Docker container is started.
+abans de crear la sessió interactiva amb el Docker.
 
-## Files and Directories
-The repository contains 4 basic folders:
+## Fitxers i Directoris
+El repositori conté bàsicament 5 carpetes:
 
- - Docker: Contains the Dockerfile and all the needed files to setup the environment to run the code.
- - Storage: This folder is required for the CVC Webservices server architecture.
- - Tensorflow: Contains all the required files for the Tensorflow models used in the code.
- - Test: Contains video files to easily test the code.
+ - Docker: Conté el fitxer de Dockerfile i tots els fitxers necessaris per crear un entorn on executar el codi.
+ - Documents: Conté un fitxer que explica el context del projecte, com s'ha desenvolupat i que dóna algunes directrius per executar el codi.
+ - Storage: Aquest directori es necessari per l'arquitectura del servidor CVC Webservices.
+ - Tensorflow: Conté tots els fitxers necessaris per executar els models de Tensorflow inclosos al codi.
+ - Test: Conté fitxers de vídeo per poder testejar fàcilment el codi.
  
- The repository also contains 5 files:
- - docker-entrypoint.sh: It is used by the CVC Webservices server architecture.
- - docker-entrypoint-debug.sh: It is used by the CVC Webservices server architecture.
- - femiotUtils.py: It contains all the functions used by the main scripts to implement the functionality
- - server_detection.py: This is the script run by the CVC Webservices architecture to implement the functionality in the CVC Webservices.
- - test_detection.py: This is a script that can be easily used to test the code in a non-server environment.
+ El repositori també conté 5 fitxers:
+ - docker-entrypoint.sh: És utilitzat per l'arquitectura del servidor CVCWebservices.
+ - docker-entrypoint-debug.sh: És utilitzat per l'arquitectura del servidor CVCWebservices.
+ - femiotUtils.py: Conté totes les funcions utilitzades pels scripts principals per implementar la funcionalitat.
+ - server_detection.py: Aquest es l'script utilitzat per l'arquitectura CVCWebservices per implementar la funcionalitat al CVCWebservices.
+ - test_detection.py: Aquest es l'script que pot ser fàcilment utilitzat per testejar el codi en un entorn sense servidor.
