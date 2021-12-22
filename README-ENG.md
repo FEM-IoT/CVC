@@ -47,7 +47,7 @@ Where ../videos/UAB-SAF_008_anonimized.avi is the name of the video to be run.
 
 The output of the script are the statistics calculated. The script can also show an image with information about where the Zebra Crossing areas are, and with the trajectories of the pedestrians and bicycles.
 If the image cannot be output, it is possible that it is required to call
-`xhost+local:docker
+xhost+local:docker
 before the interactive session with the Docker container is started.
 
 ## Files and Directories
