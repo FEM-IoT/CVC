@@ -40,12 +40,12 @@ des de la carpeta on hi ha el Dockerfile, es necessari arrencar una sessió inte
 
 Per executar l'script a dins el container, s'ha de cridar amb els següents paràmetres:
 
-        python3 test_detection.py --model1 ./TensorFlow/femiot_crossing_yolov3.pb --classNames1 ./TensorFlow/femiot.names --model2 ./TensorFlow/yolov3.pb --classNames2 ./TensorFlow/coco.names ./Test/video.mp4
+        python3 test_detection.py --model1 ./TensorFlow/femiot_crossing_yolov3.pb --classNames1 ./TensorFlow/femiot.names --model2 ./TensorFlow/yolov3.pb --classNames2 ./TensorFlow/coco.names ../videos/UAB-SAF_008_anonimized.avi
 
-On ./Test/video.mp4 es el nom del vídeo que es vol analitzar.
+On ../videos/UAB-SAF_008_anonimized.avi es el nom del vídeo que es vol analitzar que està al directori que s'ha muntat a la sessió interactiva.
 La sortida de l'script son les estadístiques calculades. L'script també pot mostrar una imatge amb informació sobre on son la/es zona/es del/s pas/sos de vianants i amb les trajectòries dels vianants i les bicicletes.
 Si la imatge no pot ser mostrada, es possible que calgui executar la següent comanda
-`xhost + loca: docker
+	xhost+local:docker
 abans de crear la sessió interactiva amb el Docker.
 
 ## Fitxers i Directoris
