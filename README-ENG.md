@@ -34,20 +34,20 @@ However, a script called "test_detection.py " is provided to be able to run the 
 
 Once the image of the container is created with docker using the command:
 
-	     sudo docker build --tag pedestriandetection .
+	sudo docker build --tag pedestriandetection .
 from the folder where the Dockerfile is, it is required to start an interactive session with the created image with the following command:
 
         sudo nvidia-docker run -it -v $(pwd)/videos:/videos -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix pedestriandetection bash
 
 To run the script into the container it has to be called with the following parameters:
 
-        python3 test_detection.py --model1 ./TensorFlow/femiot_crossing_yolov3.pb --classNames1 ./TensorFlow/femiot.names --model2 ./TensorFlow/yolov3.pb --classNames2 ./TensorFlow/coco.names ./Test/video.mp4` 
+        python3 test_detection.py --model1 ./TensorFlow/femiot_crossing_yolov3.pb --classNames1 ./TensorFlow/femiot.names --model2 ./TensorFlow/yolov3.pb --classNames2 ./TensorFlow/coco.names ../videos/UAB-SAF_008_anonimized.avi
 
-Where ./Test/video.mp4 is the name of the video to be run.
+Where ../videos/UAB-SAF_008_anonimized.avi is the name of the video to be run.
 
 The output of the script are the statistics calculated. The script can also show an image with information about where the Zebra Crossing areas are, and with the trajectories of the pedestrians and bicycles.
 If the image cannot be output, it is possible that it is required to call
-`xhost + loca: docker
+`xhost+local:docker
 before the interactive session with the Docker container is started.
 
 ## Files and Directories
