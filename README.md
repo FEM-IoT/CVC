@@ -45,7 +45,7 @@ Per executar l'script a dins el container, s'ha de cridar amb els següents par�
 On ../videos/UAB-SAF_008_anonimized.avi es el nom del vídeo que es vol analitzar que està al directori que s'ha muntat a la sessió interactiva.
 La sortida de l'script son les estadístiques calculades. L'script també pot mostrar una imatge amb informació sobre on son la/es zona/es del/s pas/sos de vianants i amb les trajectòries dels vianants i les bicicletes.
 Si la imatge no pot ser mostrada, es possible que calgui executar la següent comanda
-	xhost+local:docker
+	`xhost+local:docker
 abans de crear la sessió interactiva amb el Docker.
 
 ## Fitxers i Directoris
